@@ -47,6 +47,7 @@ jobs:
         run: |
           echo "VERSION=11`git log --abbrev-commit --pretty=oneline -1 | cut -c 1-6 || echo 'unknown'`" >> $GITHUB_ENV
           echo "BUILDTIME=`date '+%Y%m%d'`" >> $GITHUB_ENV
+          echo "DATE=`date '+%Y%m%d%H%M%S'`" >> $GITHUB_ENV
 
       # 上传编译生成的固件
       - name: 📤 Upload Artifact Files
@@ -79,7 +80,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           tag_name: ${{ env.DATE }}
-          release_name: Release ${{ env.DATE }}_${{ env.BUILDTIME }}_${{ env.VERSION }}
+          release_name: Release ${{ env.DATE }}_${{ env.VERSION }}
           draft: false
           prerelease: false
 
