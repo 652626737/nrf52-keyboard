@@ -2,7 +2,9 @@ name: Build ALL
 
 on:
   workflow_dispatch:
-
+  push:
+    branches:
+      - Glab3.0 
 jobs:
   build:
     name: Build all keyboard
